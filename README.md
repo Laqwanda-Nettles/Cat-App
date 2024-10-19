@@ -32,6 +32,83 @@ Based on the provided mockup (`mockup-single-cat.png`), the following components
    - Description: A CTA section with a button where you can receive support or Like a Cat.
    - Data Required: none (string, button)
 
+## Day 2: Setup
+
+In this project, I started a Next.js project from the ground up and incorporated Tailwind CSS for styling. Through building a splash page, I practiced using both Next.js and Tailwind, while also learning how to set up and test the workflow effectively. Additionally, I established a habit of regularly testing my work throughout the development process.
+
+### Setting Up Project
+
+1. Create a Next.js Project
+   Open terminal and run the following command:
+
+```bash
+npx create-next-app@latest
+```
+
+NOTE: For Window, you can right-click and select 'Show More Options' directly into your project's folder to open the terminal.
+
+Then choose the following options:
+
+- Name of Project: `my-example-app`
+- TypeScript: No
+- ESLint: Yes
+- Tailwind CSS: Yes
+- Use src/ directory: Yes
+- Use App Router: No
+- Customize import alias: No
+
+2. Navigate into project directory:
+
+```bash
+cd my-example-app
+```
+
+3. Open VS Code:
+
+```bash
+code .
+```
+
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+Note: You can use the already opened terminal or Open a new terminal in VS Code. 5. Open `http://localhost:3000` in browser.
+
+### Creating A Home Component
+
+1. Remove preloaded code from `src/pages/index.js` file.
+2. Create a simple component:
+
+```jsx
+export default function Home() {
+  return (
+    <>
+      <h1>Welcome to the Cat App!</h1>
+    </>
+  );
+}
+```
+
+3. Test it by visiting `http://localhost:3000`. The website should show 'Welcome to the Cat App!'.
+4. Implement Tailwind CSS and explore Tailwind's documentation.
+
+```jsx
+export default function Home() {
+  return (
+    <>
+      <h1 className="text-center text-4xl font-semibold text-[#03045e]">
+        Welcome to the Cat App!
+      </h1>
+    </>
+  );
+}
+```
+
+5. Save and confirm changes were applied by visiting `http://localhost:3000`.
+
 ## How To Run Project
 
 First, run the development server:
