@@ -5,7 +5,11 @@ export default function CatCard({ name, imgSrc }) {
         <h2 className="text-3xl text-center m-4 font-semibold text-[#22577a]">
           {name}
         </h2>
-        <img className="rounded-md" src={imgSrc} alt={name} />
+        <img
+          className="rounded-md h-[400px] w-[350px] object-cover"
+          src={imgSrc}
+          alt={name}
+        />
       </div>
     </div>
   );
