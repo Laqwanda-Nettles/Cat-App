@@ -1,34 +1,64 @@
 import { useEffect, useState } from "react";
 import NavBar from "../../components/Navbar";
-import CatCard from "../../components/CatCard";
+import FlipCard from "../../components/FlipCard";
 
 export default function MoreCats() {
+  // Declaring state variable 'cats' to store the array of cat data fetched from the API
   const [cats, setCats] = useState([]);
 
-  const URL = "https://cats-cats-cats-demo.deno.dev/cats/bur?multi_cat=true";
+  // Declaring 'loading' state to manage loading visibility
+  const [loading, setLoading] = useState(true);
 
+  // URL for fetching multiple cat data from the API
+  const URL = "https://cats-cats-cats-demo.deno.dev/cats/b?multi_cat=true";
+
+  // Asynchronous function to fetch multiple cat data from the API
   async function fetchCats() {
     try {
       const result = await fetch(URL);
       const data = await result.json();
-      console.log(data);
+      // Updating the 'cats' state with the fetched data
       setCats(data);
     } catch (error) {
+      // Logging any errors that occur during the API request
       console.error("Error fetching API data: ", error);
+    } finally {
+      // Setting 'loading' to false once data is fetched or an error occurs
+      setLoading(false);
     }
   }
 
+  // Using useEffect to fetch the list of cats when the component mounts
   useEffect(() => {
-    console.log("Testing Useeffect hi >u<");
-    fetchCats();
-  }, []);
+    fetchCats(); // Call fetchCats when the component renders
+  }, []); // Empty dependency array ensures the effect runs only once
 
   return (
     <div>
       <NavBar />
-      {cats.map((cat, index) => (
-        <CatCard key={index} imgSrc={cat.image_link} name={cat.name} />
-      ))}
+      <h1 className="text-4xl text-center font-bold">More Cats!</h1>
+
+      {loading ? (
+        <div className="flex justify-center my-10">
+          <p className="ml-4 text-2xl font-bold text-[#0077b6]">
+            Loading cats...
+          </p>
+        </div>
+      ) : (
+        <div className="flex flex-wrap justify-center items-center gap-4">
+          {cats.map((cat, index) => (
+            <FlipCard
+              key={index}
+              name={cat.name}
+              imgSrc={cat.image_link}
+              origin={cat.origin}
+              expectancy={`${cat.min_life_expectancy} - ${cat.max_life_expectancy} years`}
+              length={cat.length}
+              weight={`${cat.min_weight} - ${cat.max_weight} lbs`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
