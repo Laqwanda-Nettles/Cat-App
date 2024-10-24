@@ -1,5 +1,5 @@
-import CatFacts from "./CatFacts";
-import NavBar from "./Navbar";
+import CatFacts from "../components/CatFacts";
+import NavBar from "../components/Navbar";
 
 export default function Home() {
   return (

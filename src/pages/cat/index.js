@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import NavBar from "../Navbar";
-import CatCard from "./CatCard";
-import CatDetails from "./CatDetails";
+import NavBar from "../../components/Navbar";
+import CatCard from "../../components/CatCard";
+import CatDetails from "../../components/CatDetails";
 
 export default function Cat() {
   // Declaring state variable 'cat' to store cat data fetched from API
