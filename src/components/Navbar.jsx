@@ -27,7 +27,7 @@ export default function NavBar() {
               </Link>
             </li>
             <li>
-              <Link className="hover:text-amber-400" href="/more-cats">
+              <Link className="hover:text-amber-400" href="/pokemon">
                 Pokemon
               </Link>
             </li>
