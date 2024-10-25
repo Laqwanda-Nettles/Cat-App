@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading";
 import NavBar from "@/components/Navbar";
 import PokemonCard from "@/components/PokemonCard";
 import { useEffect, useState } from "react";
@@ -30,10 +31,17 @@ export default function Pokemon() {
       <h1 className="text-4xl text-center font-bold text-[#3d7dca]">
         Gotta Catch Them All!
       </h1>
-      <PokemonCard
-        name={pokemon.name}
-        imgSrc={pokemon.sprites?.front_default}
-      />
+      {loading ? (
+        <div className="flex justify-center my-10">
+          <Loading />
+          <p className="font-bold text-3xl text-red-600">I Choose You ...</p>
+        </div>
+      ) : (
+        <PokemonCard
+          name={pokemon.name}
+          imgSrc={pokemon.sprites?.front_default}
+        />
+      )}
     </div>
   );
 }
