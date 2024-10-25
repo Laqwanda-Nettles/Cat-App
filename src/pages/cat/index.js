@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../../components/Navbar";
 import CatCard from "../../components/CatCard";
 import CatDetails from "../../components/CatDetails";
+import Loading from "@/components/Loading";
 
 export default function Cat() {
   // Declaring state variable 'cat' to store cat data fetched from API
@@ -43,6 +44,7 @@ export default function Cat() {
 
       {loading ? (
         <div className="flex justify-center my-10">
+          <Loading />
           <p className="ml-4 text-2xl font-bold text-[#0077b6]">
             Loading cat...
           </p>
