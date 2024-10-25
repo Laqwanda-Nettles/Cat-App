@@ -26,6 +26,11 @@ export default function NavBar() {
                 More
               </Link>
             </li>
+            <li>
+              <Link className="hover:text-amber-400" href="/more-cats">
+                Pokemon
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
