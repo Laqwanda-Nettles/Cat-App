@@ -1,5 +1,7 @@
 # Cat App
 
+Jump To Updated Documentation : [Updates](#cat-app-updated)
+
 ## Day 1: Planning
 
 ### Objectives
@@ -160,7 +162,13 @@ A simple star rating system that visually represents the rating (1-5) with fille
 
 ## How To Run Project
 
-First, run the development server:
+First, clone repository and install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -174,3 +182,105 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.  
 Cat Page: [http://localhost:3000/cat](http://localhost:3000/cat)
+
+# Cat App Updated
+
+## Overview
+
+This project is part of the Week 4 assignment, which involves fetching data from an API and displaying it in React components. The goal is to practice using React hooks (`useEffect`, `useState`) for handling API requests, state management, and dynamically rendering data in the UI.
+
+The project includes multiple components, two pages that feature cats, and one that fetches Pokémon data as a bonus.
+
+## Components
+
+### FlipCard.jsx
+
+A reusable component that displays cat details with a flipping animation.
+
+#### Props:
+
+- `name`: The name of the cat.
+- `imgSrc`: The source URL for the cat's image.
+- `origin`: The origin of the cat breed.
+- `expectancy`: Life expectancy of the cat.
+- `length`: The length of the cat.
+- `weight`: The weight range of the cat.
+
+#### Usage:
+
+- Displays a front side with an image and name, and a back side with additional details about the cat.
+- Uses the `useState` hook to manage whether the card is flipped or not.
+
+### PokemonCard.jsx
+
+A component that displays a Pokémon's name and image.
+
+#### Props:
+
+- `name`: The name of the Pokémon.
+- `imgSrc`: The source URL for the Pokémon's image.
+
+#### Usage:
+
+Uses `PropTypes` to ensure that required props are passed. Shows a Pokémon with hover effects.
+
+### Loading.jsx
+
+A simple loading animation to indicate that data is being fetched.
+
+#### Usage:
+
+- Displays a circular loading animation with CSS transitions.
+
+## Pages
+
+### Cat
+
+A page that fetches and displays the "Cat of the Day" from an API.
+
+#### Features:
+
+- Fetches a single cat's data from the API (`https://cats-cats-cats-demo.deno.dev/cats/bombay`).
+- Displays the cat's name, image, and details like origin, life expectancy, and health.
+
+#### Hooks:
+
+- `useEffect` is used to fetch cat data on component mount.
+- `useState` is used to manage the fetched data and loading state.
+
+### MoreCats
+
+A page that displays multiple cats using the FlipCard component.
+
+#### Features:
+
+- Fetches an array of cat data from the API with the `multi_cat=true` query parameter.
+- Displays each cat in a flipping card layout.
+
+#### Hooks:
+
+- `useEffect` is used to fetch the array of cats on component mount.
+- `useState` is used to manage the list of cats and loading state.
+
+### Pokemon
+
+A page that fetches and displays Pokémon data (Pikachu as an example).
+
+#### Features:
+
+- Fetches Pokémon data from the PokéAPI (`https://pokeapi.co/api/v2/pokemon/pikachu`).
+- Displays the Pokémon’s name and sprite image.
+
+## Stretch Goals
+
+**Multiple Cats:** Created a more-cats page that fetches multiple cats with the `multi_cat=true` query.
+
+**Error Handling and Loading States:** Managed loading and error states across all pages.
+
+**Custom API:** Added functionality to fetch Pokémon data from the PokéAPI.
+
+**Storybook:** Implemented Storybook to document and test components in isolation.
+
+## Deployment
+
+This project is deployed on Vercel. You can access it at: https://cat-app-khaki.vercel.app/
