@@ -18,7 +18,7 @@ export default function Cat() {
   const url = "/api/cats";
 
   // Asynchronous function to fetch data from the API
-  async function fetchCat(catquery) {
+  async function fetchCat(catquery = "khao") {
     setLoading(true);
     try {
       const result = await fetch(url + `?catquery=${catquery}`);
@@ -34,18 +34,19 @@ export default function Cat() {
     }
   }
 
+  // useEffect to trigger the fetchCat function once the component is mounted
+  useEffect(() => {
+    // Invoking fetchCat function to get data when component loads
+    fetchCat();
+  }, []); // Empty dependency array ensures this only runs once
+
+  // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (catQuery) {
       fetchCat(catQuery);
     }
   };
-
-  // // useEffect to trigger the fetchCat function once the component is mounted
-  // useEffect(() => {
-  //   // Invoking fetchCat function to get data when component loads
-  //   fetchCat();
-  // }, []); // Empty dependency array ensures this only runs once
 
   return (
     <>
