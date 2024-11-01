@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   const { catquery } = req.query;
   try {
     const cat = await getCatData(catquery);
-
+    console.log(cat);
     const responseData = {};
     if (cat.length > 0) {
       responseData.name = cat[0].name;
