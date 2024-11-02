@@ -10,12 +10,12 @@ export default function MoreCats() {
   const [loading, setLoading] = useState(true);
 
   // URL for fetching multiple cat data from the API
-  const URL = "https://cats-cats-cats-demo.deno.dev/cats/b?multi_cat=true";
+  const URL = "/api/more-cats";
 
   // Asynchronous function to fetch multiple cat data from the API
-  async function fetchCats() {
+  async function fetchCats(name = "n") {
     try {
-      const result = await fetch(URL);
+      const result = await fetch(URL + `?name=${name}`);
       const data = await result.json();
       // Updating the 'cats' state with the fetched data
       setCats(data);
@@ -50,9 +50,9 @@ export default function MoreCats() {
             <FlipCard
               key={index}
               name={cat.name}
-              imgSrc={cat.image_link}
+              imgSrc={cat.image}
               origin={cat.origin}
-              expectancy={`${cat.min_life_expectancy} - ${cat.max_life_expectancy} years`}
+              expectancy={`${cat.min_life} - ${cat.max_life} years`}
               length={cat.length}
               weight={`${cat.min_weight} - ${cat.max_weight} lbs`}
             />
