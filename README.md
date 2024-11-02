@@ -454,3 +454,36 @@ Screenshots of the Postman request for the APIs
 ## Deployed Link
 
 You can view the live project [here](https://cat-app-khaki.vercel.app/).
+
+## Challenges and Solutions
+
+### Challenge: Handling the 429 "Too Many Requests" Error
+
+When implementing the trivia feature, I encountered a significant issue with the Open Trivia Database API, where repeated requests would often result in a 429 status error (Too Many Requests). This error occurs when an API’s rate limit is exceeded by making too many requests within a short timeframe. Because trivia data is fetched each time a user loads the page or requests new data, it was essential to handle this error effectively.
+
+### Solution: Exponential Backoff Retry Mechanism
+
+To address this, I implemented an exponential backoff strategy. This technique delays each retry attempt progressively longer after each 429 error. Here’s how I approached it:
+
+1. **Error Detection and Retry Logic:** When a 429 error was detected, I set up the `fetchTrivia` function to retry up to 5 times. Each retry would increase the waiting time by doubling the previous delay, helping avoid overwhelming the API and improving chances of a successful fetch.
+
+2. **Exponential Backoff Calculation:** For each retry attempt, I calculated the delay as `Math.pow(2, attempt) * 1000` milliseconds (1s, 2s, 4s, 8s, etc.), which prevented the function from retrying too quickly.
+
+3. **Fallback to Error Display:** After 5 unsuccessful attempts, the code stops retrying and displays an error message to inform users that trivia data couldn't be loaded.
+
+#### Code Snippet for Backoff Logic:
+
+```js
+if (error.message.includes("429") && attempt <= 5) {
+  const backoffTime = Math.pow(2, attempt) * 1000;
+  setTimeout(() => {
+    fetchTrivia(attempt + 1);
+  }, backoffTime);
+} else {
+  setError(error.message);
+}
+```
+
+### What I Learned
+
+This challenge taught me the importance of handling API rate limits gracefully and provided insights into common strategies like exponential backoff for retrying requests. Implementing this solution has strengthened my understanding of error handling in asynchronous JavaScript functions and given me practical experience in optimizing API request patterns to improve user experience.
