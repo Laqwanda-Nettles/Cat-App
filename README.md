@@ -453,4 +453,4 @@ Screenshots of the Postman request for the APIs
 
 ## Deployed Link
 
-You can view the live project [here](cat-app-khaki.vercel.app).
+You can view the live project [here](https://cat-app-khaki.vercel.app/).
