@@ -15,7 +15,7 @@ export default function Cat() {
   const [catQuery, setCatQuery] = useState(""); // State to store cat breed query
 
   // URL for the API to fetch cat data
-  const url = "/api/cats";
+  const url = "/api/cat";
 
   // Asynchronous function to fetch data from the API
   async function fetchCat(catquery = "khao") {
