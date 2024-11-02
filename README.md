@@ -1,6 +1,7 @@
 # Cat App
 
-Jump To Updated Documentation : [Updates](#cat-app-updated)
+Jump To Updated Documentation : [Updates](#cat-app-updated)  
+Jump To Documentation : [API Proxies](#cat-app---api-proxies)
 
 ## Day 1: Planning
 
@@ -284,3 +285,172 @@ A page that fetches and displays Pokémon data (Pikachu as an example).
 ## Deployment
 
 This project is deployed on Vercel. You can access it at: https://cat-app-khaki.vercel.app/
+
+# Cat App - API Proxies
+
+Cat App is a web application designed to fetch and display data related to cats, Pokémon, trivia questions, and weather. By utilizing a proxy server, the app connects to various external APIs, enhancing user interaction through a sleek interface styled with Tailwind CSS. This project offers a fun and interactive experience, allowing users to explore information across multiple pages while dynamically serving content through Next.js.
+
+## Project Setup
+
+To run the project locally, install dependencies and start the development server:
+
+```bash
+npm install
+npm run dev
+```
+
+Ensure that the environment variables are set as described in the [Environment Variables](#environment-variables) section.
+
+## Environment Variables
+
+Create a .env file at the root of the project to store the necessary API keys:
+
+```
+NINJA_API_KEY=<your ninja api key>
+WEATHER_API=<your weather api key>
+```
+
+## API Endpoints
+
+### `/api/cat`
+
+Fetches data about a specific cat breed.
+
+- **Query Parameter:** `catquery` - The name of the cat breed to search for.
+- **Example Request:** `/api/cat?catquery=khao`
+- **Response:**
+
+```json
+{
+  "name": "Khao Manee",
+  "origin": "Thailand",
+  "length": "Medium",
+  "image": "https://example.com/cat.jpg",
+  "min_life": 10,
+  "max_life": 12,
+  "health": 5,
+  "family_friendly": 4,
+  "shedding": 3,
+  "grooming": 2,
+  "playful": 5
+}
+```
+
+### `/api/more-cats`
+
+Fetches an array of cat breeds that match a specific query.
+
+- **Query Parameter:** `name` - A partial or full name for cat breeds to search.
+- **Example Request:** `/api/more-cats?name=n`
+- **Response:**
+
+```json
+[
+  {
+    "name": "Norwegian Forest Cat",
+    "origin": "Norway",
+    "min_life": 12,
+    "max_life": 16,
+    "length": "Large",
+    "min_weight": 8,
+    "max_weight": 18,
+    "image": "https://example.com/cat.jpg"
+  },
+  ...
+]
+```
+
+### `/api/pokemon`
+
+Fetches Pokémon data for a specified Pokémon.
+
+- **Query Parameter:** `name` - The Pokémon's name.
+- **Example Request:** `/api/pokemon?name=pikachu`
+- **Response:**
+
+```json
+{
+  "name": "Pikachu",
+  "ability": "Static",
+  "secondAbility": "No second ability",
+  "type": "Electric",
+  "img": "https://example.com/pikachu.jpg"
+}
+```
+
+### `/api/trivia`
+
+Fetches a random anime trivia question.
+
+- **Example Request:** `/api/trivia`
+- **Response:**
+
+```json
+{
+  "question": "Who is the main character in Naruto?",
+  "difficulty": "medium",
+  "answer": "Naruto Uzumaki"
+}
+```
+
+### `/api/weather`
+
+Fetches current weather data for a specific city.
+
+- **Query Parameter:** `city` - The name of the city.
+- **Example Request:** `/api/weather?city=London`
+- **Response:**
+
+```json
+{
+  "temp": 15,
+  "desc": "Clear sky",
+  "city": "London"
+}
+```
+
+## Pages
+
+### Cat
+
+Displays details about a specific cat breed, with search functionality to find other breeds.
+
+### More Cats
+
+Shows a list of cat breeds in a flip card layout, with each card displaying key information.
+
+### Pokemon
+
+Displays data about a specific Pokémon, including abilities, type, and an image.
+
+### Trivia
+
+Fetches and displays a random anime trivia question, including the question difficulty. The trivia page utilizes Tailwind CSS to apply hover effects with opacity changes, allowing users to reveal the answer when hovering over the trivia question.
+
+## Thunder Client Collection
+
+Screenshots of the Postman request for the APIs
+
+### /api/cat
+
+![alt text](image.png)
+
+### /api/more-cats
+
+![alt text](image-1.png)
+
+### /api/pokemon
+
+![alt text](image-2.png)
+
+### /api/trivia
+
+![alt text](image-3.png)
+
+### /api/weather
+
+![alt text](image-4.png)
+
+## Deployed Link
+
+You can view the live project [here](cat-app-khaki.vercel.app).

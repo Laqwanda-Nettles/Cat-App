@@ -28,28 +28,28 @@ export default function CatDetails({
       <h3 className="text-3xl font-semibold text-center drop-shadow">
         Cat Ratings:
       </h3>
-      <div className="w-40 m-auto text-xl flex flex-col items-start">
-        <p>
+      <section className="w-40 m-auto text-xl flex flex-col items-start">
+        <div>
           <span className="font-semibold">Family Friendly: </span>
           <StarRating rating={familyFriendly} />
-        </p>
-        <p>
+        </div>
+        <div>
           <span className="font-semibold">General Health: </span>
           <StarRating rating={health} />
-        </p>
-        <p>
+        </div>
+        <div>
           <span className="font-semibold">Shedding: </span>
           <StarRating rating={shedding} />
-        </p>
-        <p>
+        </div>
+        <div>
           <span className="font-semibold">Playfulness: </span>
           <StarRating rating={playfulness} />
-        </p>
-        <p>
+        </div>
+        <div>
           <span className="font-semibold">Grooming: </span>
           <StarRating rating={grooming} />
-        </p>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -31,6 +31,11 @@ export default function NavBar() {
                 Pokemon
               </Link>
             </li>
+            <li>
+              <Link className="hover:text-amber-400" href="/trivia">
+                Trivia
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
